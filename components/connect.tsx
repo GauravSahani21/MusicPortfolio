@@ -21,7 +21,7 @@ export function Connect() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/urban-city-nightlife.png')",
+          backgroundImage: "url('/naruto.jpg')",
         }}
       />
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />

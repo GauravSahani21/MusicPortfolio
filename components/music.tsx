@@ -114,7 +114,7 @@ export function Music() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/concert-stage-performance.png')",//add your background image here
+          backgroundImage: "url('/gojo.jpg')",//add your background image here
         }}
       />
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
