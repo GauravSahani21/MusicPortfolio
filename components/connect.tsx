@@ -11,8 +11,7 @@ export function Connect() {
     { name: "YouTube", icon: Youtube, url: "#", followers: "25K", color: "hover:text-red-500" },
     { name: "Spotify", icon: Music, url: "#", followers: "15K", color: "hover:text-green-500" },
     { name: "Instagram", icon: Instagram, url: "#", followers: "30K", color: "hover:text-pink-500" },
-    { name: "Twitter", icon: Twitter, url: "#", followers: "12K", color: "hover:text-blue-500" },
-    { name: "Facebook", icon: Facebook, url: "#", followers: "8K", color: "hover:text-blue-600" },
+
   ]
 
   return (
@@ -21,7 +20,7 @@ export function Connect() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/naruto.jpg')",
+          backgroundImage: "url('/_DSC3695 (1).jpg')",
         }}
       />
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
@@ -150,8 +149,7 @@ export function Connect() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h4 className="font-semibold mb-2 text-white">Business Inquiries</h4>
-                <p className="text-white/80">management@boirk.com</p>
+                
               </motion.div>
             </motion.div>
           </div>

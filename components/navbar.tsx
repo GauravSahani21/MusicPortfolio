@@ -1,14 +1,78 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Volume2, VolumeX } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false)
   const navRef = useRef<HTMLElement | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    // Create and configure audio element
+    audioRef.current = new Audio('/FunFact.mp3')
+    audioRef.current.loop = true
+    audioRef.current.volume = 0.5 // Set volume to 50%
+    
+    // Function to start playing
+    const startPlaying = async () => {
+      try {
+        if (audioRef.current) {
+          await audioRef.current.play()
+          setIsMusicPlaying(true)
+        }
+      } catch (error: unknown) {
+        console.warn('Autoplay prevented:', error instanceof Error ? error.message : 'User interaction needed')
+      }
+    }
+
+    // Try to play immediately
+    startPlaying()
+
+    // Add event listeners for visibility change and user interaction
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && !isMusicPlaying) {
+        startPlaying()
+      }
+    }
+
+    const handleUserInteraction = () => {
+      if (!isMusicPlaying) {
+        startPlaying()
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    document.addEventListener('click', handleUserInteraction, { once: true })
+    document.addEventListener('touchstart', handleUserInteraction, { once: true })
+    document.addEventListener('keydown', handleUserInteraction, { once: true })
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      document.removeEventListener('click', handleUserInteraction)
+      document.removeEventListener('touchstart', handleUserInteraction)
+      document.removeEventListener('keydown', handleUserInteraction)
+    }
+  }, [])
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isMusicPlaying) {
+        audioRef.current.pause()
+      } else {
+        audioRef.current.play()
+      }
+      setIsMusicPlaying(!isMusicPlaying)
+    }
+  }
 
   // map nav items to preferred section ids (you can change these if your HTML uses different ids)
   const sectionMap: Record<string, string> = {
@@ -111,7 +175,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item, index) => (
                 <motion.button
@@ -129,6 +193,22 @@ export function Navbar() {
                 </motion.button>
               ))}
             </div>
+
+            {/* Music Control Button */}
+            <motion.div className="ml-8" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <Button
+                size="icon"
+                variant="outline"
+                className="w-10 h-10 rounded-full border-white/20 bg-black/50 backdrop-blur-sm hover:bg-black/70"
+                onClick={toggleMusic}
+              >
+                {isMusicPlaying ? (
+                  <Volume2 className="h-4 w-4 text-white" />
+                ) : (
+                  <VolumeX className="h-4 w-4 text-white" />
+                )}
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -173,6 +253,29 @@ export function Navbar() {
                     {item}
                   </motion.button>
                 ))}
+                
+                {/* Music Control Button (Mobile) */}
+                <motion.div
+                  className="px-3 py-4 flex justify-center"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                >
+                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="w-12 h-12 rounded-full border-white/20 bg-black/50 backdrop-blur-sm hover:bg-black/70"
+                      onClick={toggleMusic}
+                    >
+                      {isMusicPlaying ? (
+                        <Volume2 className="h-5 w-5 text-white" />
+                      ) : (
+                        <VolumeX className="h-5 w-5 text-white" />
+                      )}
+                    </Button>
+                  </motion.div>
+                </motion.div>
               </div>
             </motion.div>
           )}

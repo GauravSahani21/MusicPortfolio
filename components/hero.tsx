@@ -5,12 +5,14 @@ import { Play, Music2 } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function Hero() {
+
   const scrollToMusic = () => {
     const musicSection = document.getElementById("music")
     if (musicSection) {
       musicSection.scrollIntoView({ behavior: "smooth" })
     }
   }
+  
   const scrollToConect = () => {
     const connectSection = document.getElementById("connect")
     if (connectSection) {
@@ -23,12 +25,19 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden border-b-2 border-white/20"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/_DSC3695 (1).JPG')",
-        }}
-      />
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1.5 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat h-[120%] w-[120%] -left-[10%] -top-[10%]"
+          style={{
+            backgroundImage: "url('/_DSC3695 (1).JPG')",
+          }}
+        />
+      </motion.div>
 
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30" />
@@ -39,6 +48,7 @@ export function Hero() {
         <div className="absolute bottom-20 right-20 w-40 h-40 bg-accent rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-secondary rounded-full blur-3xl"></div>
       </div>
+
 
       <motion.div
         className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10"
