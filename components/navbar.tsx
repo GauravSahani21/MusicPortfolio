@@ -154,9 +154,10 @@ export function Navbar() {
       ref={navRef as any}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 border-b border-white/10" : "bg-transparent"
         }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,9 +167,6 @@ export function Navbar() {
               type="button"
               onClick={() => scrollToSection(sectionMap["Home"])}
               className="text-white font-black text-2xl tracking-wider hover:text-red-500 transition-colors"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Go to home"
@@ -180,15 +178,12 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <motion.button
                   key={item}
                   type="button"
                   onClick={() => scrollToSection(sectionMap[item])}
                   className="text-white hover:text-red-500 px-3 py-2 text-base font-medium transition-all duration-300 relative group hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 * index }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -199,18 +194,16 @@ export function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <motion.div whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen((s) => !s)}
-                className="text-white hover:text-red-500 hover:bg-white/10"
-                aria-label="Toggle menu"
-              >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </motion.div>
+          <div className="md:hidden flex items-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen((s) => !s)}
+              className="text-white hover:text-red-500 hover:bg-white/10"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
 
@@ -222,23 +215,18 @@ export function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-md rounded-lg mt-2 border border-white/10">
-                {navItems.map((item, index) => (
-                  <motion.button
+                {navItems.map((item) => (
+                  <button
                     key={item}
                     type="button"
                     onClick={() => scrollToSection(sectionMap[item])}
-                    className="text-white hover:text-red-500 block px-3 py-2 text-lg font-medium w-full text-left transition-all duration-300 relative hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] after:content-[''] after:absolute after:bottom-0 after:left-3 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-[calc(100%-24px)]"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 * index }}
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="text-white hover:text-red-500 block px-3 py-2 text-lg font-medium w-full text-left transition-all duration-200 relative hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] after:content-[''] after:absolute after:bottom-0 after:left-3 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-200 hover:after:w-[calc(100%-24px)]"
                   >
                     {item}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
             </motion.div>
