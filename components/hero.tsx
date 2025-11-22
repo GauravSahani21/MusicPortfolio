@@ -12,7 +12,7 @@ export function Hero() {
       musicSection.scrollIntoView({ behavior: "smooth" })
     }
   }
-  
+
   const scrollToConect = () => {
     const connectSection = document.getElementById("connect")
     if (connectSection) {
@@ -51,7 +51,7 @@ export function Hero() {
 
 
       <motion.div
-        className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10"
+        className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-10"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -63,9 +63,9 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <Music2 className="w-16 h-16 mx-auto mb-4 text-red-500" />
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-4">BOI &nbsp;R K</h1>
-          <p className="text-xl md:text-2xl text-white font-medium">Singer • Rapper • Producer</p>
+          <Music2 className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-red-500" />
+          <h1 className="text-5xl md:text-8xl font-bold text-white mb-4">BOI &nbsp;R K</h1>
+          <p className="text-lg md:text-2xl text-white font-medium">Singer • Rapper • Producer</p>
         </motion.div>
 
         {/* Call to Action */}
@@ -75,14 +75,14 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button size="lg" className="text-lg px-8 py-6 bg-white text-black hover:bg-white/90" onClick={scrollToMusic}>
+          <Button size="lg" className="text-base md:text-lg px-6 py-4 md:px-8 md:py-6 bg-white text-black hover:bg-white/90" onClick={scrollToMusic}>
             <Play className="w-5 h-5 mr-2" />
             Listen Now
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="text-lg px-8 py-6 border-white text-white hover:bg-white hover:text-black bg-transparent" onClick={scrollToConect}
+            className="text-base md:text-lg px-6 py-4 md:px-8 md:py-6 border-white text-white hover:bg-white hover:text-black bg-transparent" onClick={scrollToConect}
           >
             Follow Me
           </Button>
@@ -90,22 +90,22 @@ export function Hero() {
 
         {/* Streaming Stats */}
         <motion.div
-          className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto"
+          className="mt-12 grid grid-cols-3 gap-4 md:gap-8 max-w-md mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <div className="text-center">
-            <div className="text-2xl font-bold text-white">1M+</div>
-            <div className="text-sm text-white/80">Streams</div>
+            <div className="text-xl md:text-2xl font-bold text-white">1M+</div>
+            <div className="text-xs md:text-sm text-white/80">Streams</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-white">50K+</div>
-            <div className="text-sm text-white/80">Followers</div>
+            <div className="text-xl md:text-2xl font-bold text-white">50K+</div>
+            <div className="text-xs md:text-sm text-white/80">Followers</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-white">25+</div>
-            <div className="text-sm text-white/80">Tracks</div>
+            <div className="text-xl md:text-2xl font-bold text-white">25+</div>
+            <div className="text-xs md:text-sm text-white/80">Tracks</div>
           </div>
         </motion.div>
       </motion.div>

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import { Menu, X, Volume2, VolumeX } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -13,6 +13,9 @@ export function Navbar() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
+    // Background music disabled - no autoplay
+    // Uncomment below to re-enable background music
+    /*
     // Create and configure audio element
     audioRef.current = new Audio('/FunFact.mp3')
     audioRef.current.loop = true
@@ -61,6 +64,7 @@ export function Navbar() {
       document.removeEventListener('touchstart', handleUserInteraction)
       document.removeEventListener('keydown', handleUserInteraction)
     }
+    */
   }, [])
 
   const toggleMusic = () => {
@@ -148,9 +152,8 @@ export function Navbar() {
   return (
     <motion.nav
       ref={navRef as any}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/20 backdrop-blur-md border-b border-white/10" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 border-b border-white/10" : "bg-transparent"
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -193,22 +196,6 @@ export function Navbar() {
                 </motion.button>
               ))}
             </div>
-
-            {/* Music Control Button */}
-            <motion.div className="ml-8" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <Button
-                size="icon"
-                variant="outline"
-                className="w-10 h-10 rounded-full border-white/20 bg-black/50 backdrop-blur-sm hover:bg-black/70"
-                onClick={toggleMusic}
-              >
-                {isMusicPlaying ? (
-                  <Volume2 className="h-4 w-4 text-white" />
-                ) : (
-                  <VolumeX className="h-4 w-4 text-white" />
-                )}
-              </Button>
-            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -253,29 +240,6 @@ export function Navbar() {
                     {item}
                   </motion.button>
                 ))}
-                
-                {/* Music Control Button (Mobile) */}
-                <motion.div
-                  className="px-3 py-4 flex justify-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                >
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      className="w-12 h-12 rounded-full border-white/20 bg-black/50 backdrop-blur-sm hover:bg-black/70"
-                      onClick={toggleMusic}
-                    >
-                      {isMusicPlaying ? (
-                        <Volume2 className="h-5 w-5 text-white" />
-                      ) : (
-                        <VolumeX className="h-5 w-5 text-white" />
-                      )}
-                    </Button>
-                  </motion.div>
-                </motion.div>
               </div>
             </motion.div>
           )}

@@ -23,7 +23,7 @@ export function Connect() {
           backgroundImage: "url('/_DSC3695 (1).jpg')",
         }}
       />
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/80" />
 
       {/* Content with enhanced glass effect */}
       <div className="relative z-10">
@@ -35,13 +35,13 @@ export function Connect() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Stay Connected</h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Stay Connected</h2>
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
               Follow the journey, get exclusive content, and be the first to hear new releases.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Social Media Links */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -49,7 +49,7 @@ export function Connect() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold mb-6 text-white">Follow on Social Media</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-6 text-white">Follow on Social Media</h3>
               <div className="space-y-4">
                 {socialLinks.map((social, index) => (
                   <motion.div
@@ -60,7 +60,7 @@ export function Connect() {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <Card className="group hover:shadow-lg transition-all duration-300 border-white/20 hover:border-red-500/40 bg-black/30 backdrop-blur-md">
+                    <Card className="group hover:shadow-lg transition-all duration-300 border-white/20 hover:border-red-500/40 bg-black/40">
                       <CardContent className="p-4">
                         <a href={social.url} className="flex items-center justify-between">
                           <div className="flex items-center gap-4">
@@ -99,9 +99,9 @@ export function Connect() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold mb-6 text-white">Get Exclusive Updates</h3>
-              <Card className="bg-black/30 backdrop-blur-md border-white/20">
-                <CardContent className="p-8">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 text-white">Get Exclusive Updates</h3>
+              <Card className="bg-black/40 border-white/20">
+                <CardContent className="p-6 md:p-8">
                   <motion.div
                     className="text-center mb-6"
                     initial={{ opacity: 0, y: 20 }}
@@ -110,10 +110,10 @@ export function Connect() {
                     viewport={{ once: true }}
                   >
                     <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-                      <Mail className="w-12 h-12 mx-auto mb-4 text-red-500" />
+                      <Mail className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-4 text-red-500" />
                     </motion.div>
-                    <h4 className="text-xl font-semibold mb-2 text-white">Join the VIP List</h4>
-                    <p className="text-white/80">
+                    <h4 className="text-lg md:text-xl font-semibold mb-2 text-white">Join the VIP List</h4>
+                    <p className="text-sm md:text-base text-white/80">
                       Be the first to know about new releases, exclusive content, and upcoming shows.
                     </p>
                   </motion.div>
@@ -149,7 +149,7 @@ export function Connect() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
               >
-                
+
               </motion.div>
             </motion.div>
           </div>

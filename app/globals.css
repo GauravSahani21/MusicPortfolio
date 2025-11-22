@@ -34,4 +34,21 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Performance optimizations for smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hardware acceleration for transforms and opacity */
+  img, video {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Optimize animations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

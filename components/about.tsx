@@ -13,10 +13,9 @@ export function About() {
         backgroundImage: "url('/confident-singer-rapper.JPG')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/80"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -26,13 +25,13 @@ export function About() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">About the Artist</h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">About the Artist</h2>
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Discover the story behind the music and the passion that drives every beat.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Artist Image */}
           <motion.div
             className="relative"
@@ -41,7 +40,7 @@ export function About() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="aspect-square rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
+            <div className="aspect-square rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
               <img
                 src="/confident-singer-rapper.JPG"
                 alt="Artist Portrait"
@@ -59,7 +58,7 @@ export function About() {
             viewport={{ once: true }}
           >
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-white">The Journey</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">The Journey</h3>
               <p className="text-white/80 leading-relaxed mb-4">
                 Born and raised with music in their soul, this artist has been crafting unique sounds that blend
                 contemporary rap with soulful melodies. Their journey began in local venues and has evolved into a
@@ -78,7 +77,7 @@ export function About() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold mb-3 text-white">Genres</h4>
+              <h4 className="text-base md:text-lg font-semibold mb-3 text-white">Genres</h4>
               <div className="flex flex-wrap gap-2">
                 {["Hip Hop", "R&B", "Pop Rap", "Soul"].map((genre, index) => (
                   <motion.div
@@ -104,9 +103,9 @@ export function About() {
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="p-6 bg-black/30 backdrop-blur-md border-red-500/30">
-                <h4 className="text-lg font-semibold mb-3 text-white">Recent Achievements</h4>
-                <ul className="space-y-2 text-white/80">
+              <Card className="p-6 bg-black/40 border-red-500/30">
+                <h4 className="text-base md:text-lg font-semibold mb-3 text-white">Recent Achievements</h4>
+                <ul className="space-y-2 text-sm md:text-base text-white/80">
                   <li>• Featured on Spotify's "New Music Friday"</li>
                   <li>• Performed at major music festivals</li>
                   <li>• Collaborated with renowned producers</li>
